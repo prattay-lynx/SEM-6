@@ -1,0 +1,117 @@
+/* Question1: Empno number;Ename varchar2; Job char; Mgr number;hiredate Date;Sal number;
+Comm number;Deptno number;*/
+
+CREATE TABLE STUDENT_EMP50 (
+    Empno number(3),
+    Ename varchar2(10),
+    Job char(20),
+    Mgr number(5),
+    Hiredate Date,
+    Sal number(10,2),
+    Comm number(10,2),
+    Deptno number(4)
+);
+
+/* Question2: Dno number;Dname varchar2;loc varchar*/
+
+CREATE TABLE STUDENT_DEPT50 (
+    Dno number(5),
+    Dname varchar2(4),
+    Loc varchar(8)
+);
+
+/* Question3: Add a new attribute phone to the table EMP */
+
+ALTER TABLE STUDENT_EMP50
+    ADD Phone number(10);
+
+/* Question4: Change the datatype of job char to varchar */
+
+ALTER TABLE STUDENT_EMP50 MODIFY Job varchar(20);
+
+/* Question5: Remove the attribute Phone */
+
+ALTER TABLE STUDENT_EMP50 DROP COLUMN Phone;
+
+/* Question6: Describe the table */
+
+DESC STUDENT_EMP50;
+DESC STUDENT_DEPT50;
+
+/*Output:
+SQL> DESC STUDENT_EMP50;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(3)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(20)
+ MGR                                                NUMBER(5)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(10,2)
+ COMM                                               NUMBER(10,2)
+ DEPTNO                                             NUMBER(4)
+
+SQL> DESC STUDENT_DEPT50;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                NUMBER(5)
+ DNAME                                              VARCHAR2(4)
+ LOC                                                VARCHAR2(8)
+ */
+ 
+/* Question6: Insert atleast 5 records in both the table */
+
+INSERT INTO STUDENT_EMP50 VALUES (101,'John','Engineer',5009,'17-DEC-2018',70000.70,NULL,12);
+INSERT INTO STUDENT_EMP50 VALUES (102,'William','Clerk',5009,'16-JUN-2008',18000.70,500,19);
+INSERT INTO STUDENT_EMP50 VALUES (103,'Smith','Salesman',5010,'28-FEB-2009',25000.70,300,10);
+INSERT INTO STUDENT_EMP50 VALUES (104,'Mclane','Engineer',5011,'20-MAR-2020',65000.70,450,12);
+INSERT INTO STUDENT_EMP50 VALUES (105,'Howarts','Manager',5009,'17-JAN-2000',100000.90,NULL,12);
+
+INSERT INTO STUDENT_DEPT50 VALUES (50,'ACC','NewYork');
+INSERT INTO STUDENT_DEPT50 VALUES (51,'RES','England');
+INSERT INTO STUDENT_DEPT50 VALUES (52,'Sal','Belgium');
+INSERT INTO STUDENT_DEPT50 VALUES (53,'OPER','Hungary');
+INSERT INTO STUDENT_DEPT50 VALUES (54,'RES','China');
+
+commit;
+
+/*OUTPUT:
+SQL> SELECT * FROM STUDENT_EMP50;
+
+     EMPNO ENAME      JOB                         MGR HIREDATE         SAL
+---------- ---------- -------------------- ---------- --------- ----------
+      COMM     DEPTNO
+---------- ----------
+       101 John       Engineer                   5009 17-DEC-18    70000.7
+                   12
+
+       102 William    Clerk                      5009 16-JUN-08    18000.7
+       500         19
+
+       104 Mclane     Engineer                   5011 20-MAR-20    65000.7
+       450         12
+
+
+     EMPNO ENAME      JOB                         MGR HIREDATE         SAL
+---------- ---------- -------------------- ---------- --------- ----------
+      COMM     DEPTNO
+---------- ----------
+       103 Smith      Salesman                   5010 28-FEB-09    25000.7
+       300         10
+
+       105 Howarts    Manager                    5009 17-JAN-00   100000.9
+                   12
+
+
+SQL> SELECT * FROM STUDENT_DEPT50;
+
+       DNO DNAM LOC
+---------- ---- --------
+        50 ACC  NewYork
+        51 RES  England
+        52 Sal  Belgium
+        53 OPER Hungary
+        54 RES  China
+
+*/
+
