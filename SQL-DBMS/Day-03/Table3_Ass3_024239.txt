@@ -1,0 +1,35 @@
+Q.1 Increase the reorder level of Shirts to 80.
+sol: UPDATE STUDENT_PRODUCT_MASTER_50
+     SET REORDERLVL = 80;
+
+Q.2 Increase unit selling price of all products by 10%.
+SOL: UPDATE STUDENT_PRODUCT_MASTER_50
+     SET SELLPRICE = SELLPRICE + SELLPRICE*0.10;
+
+Q.3 Change YtdSales of S00003 by 35.
+SOL: UPDATE STUDENT_SALESMAN_MASTER_50
+     SET YTDSALES = YTDSALES + 35 WHERE SALESMANNO = 'S00003';
+
+Q.4 Set  all  QtyDisp  values  equal  to  the  corresponding QTYOrdered  valUes  where ProductRate is less than or equal to 1000.
+SOL: UPDATE STUDENT_SALES_ORDER_DETAILS_50
+     SET QTYDISP = QTYORDERED WHERE PRODUCTRATE <= 1000;
+
+Q.5 Change Pincode of clients from Mumbai to 400001. 
+SOL: UPDATE STUDENT_CLIENT_MASTER_50
+     SET PINCODE = 400001 WHERE CITY LIKE 'MUMBAI';
+
+Q.6 Set all the reorder levels to double the existing values.
+SOL: UPDATE STUDENT_PRODUCT_MASTER_50
+     SET REORDERLVL = REORDERLVL*2;
+
+Q.7 Remove records of all cancelled orders.
+SOL: DELETE FROM STUDENT_SALES_ORDER_DETAILS_50
+     WHERE ORDERNO IN ( SELECT ORDERNO FROM STUDENT_SALES_ORDER_50 WHERE ORDERSTATUS LIKE 'CANCELLED');
+
+Q.8 Remove all records from Salesman_Master table (populate the table again).
+SOL: DROP TABLE STUDENT_SALESMAN_MASTER_50;
+
+Q.9 Find all the products whose qty_in_hand is less than reorder level.
+SOL: SELECT PRODUCTNO,DESCRIPTION FROM STUDENT_PRODUCT_MASTER_50
+     WHERE QTYINHAND < REORDERLVL;
+ 
